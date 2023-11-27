@@ -13,7 +13,8 @@ function LeftSider() {
                 </a>
                 <a href="https://x.com/parth_upman?s=21"><i class="ri-twitter-fill text-gray-500 text-2xl"></i></a>
                 
-                <i class="ri-facebook-box-fill text-gray-500 text-2xl"></i>
+                <a href="https://www.facebook.com/parth.upman.1?mibextid=LQQJ4d"><i class="ri-facebook-box-fill text-gray-500 text-2xl"></i></a>
+
             </div>
             <div className="w-[1px] h-52 bg-[#125f63] sm:hidden">
             </div>
