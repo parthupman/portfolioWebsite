@@ -99,6 +99,7 @@ const contactSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+
   age: {
     type: String,
     required: true,

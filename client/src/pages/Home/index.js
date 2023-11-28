@@ -7,13 +7,16 @@ import Projects from "./Projects";
 import Contact from "./Contact";
 import Footer from "./Footer";
 import LeftSider from "./LeftSider";
+import { useSelector } from "react-redux";
 
 
 function Home() {
+    const { loading, portfolioData, } = useSelector(
+    (state) => state.root)
     return (
         <div >
          <Header/>
-         <div className="bg-primary px-40 sm:px-5">
+         {portfolioData &&(<div className="bg-primary px-40 sm:px-5">
           <Intro/>
           <About/>
           <Experiences/>
@@ -21,7 +24,7 @@ function Home() {
           <Contact/>
           <Footer/>
           <LeftSider/>
-         </div>
+         </div>)}
         
         </div>
     )
