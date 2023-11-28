@@ -5,6 +5,7 @@ import axios from "axios"
 import Loader from "./components/Loader";
 import { useDispatch, useSelector } from "react-redux";
 import { HideLoading, SetPortfolioData, ShowLoading } from "./redux/rootSlice";
+import Admin from "./pages/Admin";
 
 function App() {
   const { loading, portfolioData, } = useSelector(
@@ -37,6 +38,7 @@ console.log(portfolioData)
       {loading ? <Loader /> : null}
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/admin" element={<Admin />} />
       </Routes>
     </BrowserRouter>
   );
