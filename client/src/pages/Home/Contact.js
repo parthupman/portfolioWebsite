@@ -1,13 +1,10 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import SectionTitle from "../../components/SectionTitle";
 
 function Contact() {
-    const contact = {
-        name:"Parth Upman",
-        gender:"Male",
-        email:"parthupman@gmail.com",
-        country:"INDIA"
-    }
+  const { portfolioData } = useSelector((state) => state.root);
+  const { contact } = portfolioData;
   return (
     <div>
       <SectionTitle title="Say Hello" />
@@ -26,8 +23,13 @@ function Contact() {
           )}
           <p className="text-tertiary">{"}"}</p>
         </div>
-        <div className="h-[400px]  mx-20 px-20 ">
-          <dotlottie-player src="https://lottie.host/3e1b5d6f-7cc0-4578-8607-823713bf326b/Uqm3O2kDUl.json" background="transparent" speed="1" loop autoplay></dotlottie-player>
+        <div className="h-[400px]">
+          <dotlottie-player
+            src="https://assets9.lottiefiles.com/packages/lf20_eroqjb7w.json"
+            background="transparent"
+            speed="1"
+            
+          ></dotlottie-player>
         </div>
       </div>
     </div>
