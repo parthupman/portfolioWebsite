@@ -4,6 +4,7 @@ import { Tabs } from "antd";
 import AdminIntro from "./AdminIntro";
 import AdminAbout from "./AdminAbout";
 import { useSelector } from "react-redux";
+import Experiences from "./Experiences";
 const { TabPane } = Tabs;
 function Admin() {
   const { portfolioData } = useSelector((state) => state.root);
@@ -29,7 +30,9 @@ function Admin() {
             <TabPane tab="About" key="2">
               <AdminAbout />
             </TabPane>
- 
+            <TabPane tab="Experiences" key="3">
+              <Experiences />
+            </TabPane>
           </Tabs>
         </div>
       )}
