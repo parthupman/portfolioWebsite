@@ -1,6 +1,8 @@
 const router = require('express').Router()
 const {Intro, About, Project, Contact, Experience,  } = require("../models/portfolioModel")
 
+const User = require("../models/userModel")
+
 //get all portfolio
 
 router.get('/get-portfolio-data',async(req,res)=>{
@@ -107,5 +109,95 @@ router.post("/delete-experience", async (req, res) => {
   }
 });
 
+// add project
+router.post("/add-project", async (req, res) => {
+  try {
+    const project = new Project(req.body);
+    await project.save();
+    res.status(200).send({
+      data: project,
+      success: true,
+      message: "Project added successfully",
+    });
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
+
+// update project
+router.post("/update-project", async (req, res) => {
+  try {
+    const project = await Project.findOneAndUpdate(
+      { _id: req.body._id },
+      req.body,
+      { new: true }
+    );
+    res.status(200).send({
+      data: project,
+      success: true,
+      message: "Project updated successfully",
+    });
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
+
+// delete project
+
+router.post("/delete-project", async (req, res) => {
+  try {
+    const project = await Project.findOneAndDelete({ _id: req.body._id });
+    res.status(200).send({
+      data: project,
+      success: true,
+      message: "Project deleted successfully",
+    });
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
+
+router.post("/update-contact", async (req, res) => {
+  try {
+    const contact = await Contact.findOneAndUpdate(
+      { _id: req.body._id },
+      req.body,
+      { new: true }
+    );
+    res.status(200).send({
+      data: contact,
+      success: true,
+      message: "Contact updated successfully",
+    });
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
+
+// admin login
+router.post("/admin-login", async (req, res) => {
+  try {
+    const user = await User.findOne({
+      username: req.body.username,
+      password: req.body.password,
+    });
+    user.password = "";
+    if (user) {
+      res.status(200).send({
+        data: user,
+        success: true,
+        message: "Login successfully",
+      });
+    } else {
+      res.status(200).send({
+        data: user,
+        success: false,
+        message: "Invalid username or password",
+      });
+    }
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
 
 module.exports = router
